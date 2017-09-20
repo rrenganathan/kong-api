@@ -1,0 +1,20 @@
+{
+    "name": "smalot/kong-api",
+    "description": "PHP Wrapper for Kong API Gateway - Microservices Management Layer, delivering high performance and reliability.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastien Malot",
+            "email": "sebastien@malot.fr"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Smalot\\Kong\\": "Kong"
+        }
+    }
+}
