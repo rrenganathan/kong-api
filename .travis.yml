@@ -27,5 +27,4 @@ before_script:
   - sleep 10
 
 script:
-  - curl -v http://127.0.0.1:8001/
-#  - ./vendor/bin/atoum -d Tests/ -ncc
+  - ./vendor/bin/atoum -d Tests/ -ncc
