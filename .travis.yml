@@ -17,6 +17,8 @@ before_script:
   - composer update
   - composer --prefer-source --dev install
   # Install Kong env (cf: https://getkong.org/install/docker)
+  - docker run --help
+  - docker -v
   - docker run -d --name kong-database \
         -p 5432:5432 \
         -e "POSTGRES_USER=kong" \
