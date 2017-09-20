@@ -2,9 +2,6 @@ sudo: required
 
 language: php
 
-services:
-  - docker
-
 php:
   - 5.6
   - 7.0
@@ -22,10 +19,13 @@ before_script:
   - composer update
   - composer --prefer-source --dev install
   # Install Kong env (cf: https://getkong.org/install/docker)
+  - sudo /etc/init.d/postgresql stop
   - docker run -d --name kong-database -p 5432 -e "POSTGRES_USER=kong" -e "POSTGRES_DB=kong" postgres:9.4
   - docker run -it --rm --link kong-database:kong-database -e "KONG_DATABASE=postgres" -e "KONG_PG_HOST=kong-database" -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" kong:latest kong migrations up
   - docker run -d --name kong --link kong-database:kong-database -e "KONG_DATABASE=postgres" -e "KONG_PG_HOST=kong-database" -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" -e "KONG_PROXY_ACCESS_LOG=/dev/stdout" -e "KONG_ADMIN_ACCESS_LOG=/dev/stdout" -e "KONG_PROXY_ERROR_LOG=/dev/stderr" -e "KONG_ADMIN_ERROR_LOG=/dev/stderr" -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 8444:8444 kong:latest
+  # Wait for Kong available
+  - sleep 10
 
 script:
-  - curl -v http://localhost:8001/
+  - curl -v http://127.0.0.1:8001/
 #  - ./vendor/bin/atoum -d Tests/ -ncc
