@@ -12,6 +12,8 @@ use Smalot\Kong\Services\Consumer;
 use Smalot\Kong\Services\ConsumerInterface;
 use Smalot\Kong\Services\Plugin;
 use Smalot\Kong\Services\PluginInterface;
+use Smalot\Kong\Services\Sni;
+use Smalot\Kong\Services\SniInterface;
 use Smalot\Kong\Services\Target;
 use Smalot\Kong\Services\TargetInterface;
 use Smalot\Kong\Services\Upstream;
@@ -24,7 +26,7 @@ final class ServiceFactory
       CertificateInterface::SERVICE_NAME => Certificate::class,
       ConsumerInterface::SERVICE_NAME => Consumer::class,
       PluginInterface::SERVICE_NAME => Plugin::class,
-        //        SniInterface::SERVICE_NAME => Sni::class,
+      SniInterface::SERVICE_NAME => Sni::class,
       TargetInterface::SERVICE_NAME => Target::class,
       UpstreamInterface::SERVICE_NAME => Upstream::class,
     ];

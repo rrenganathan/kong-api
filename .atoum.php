@@ -1,5 +1,7 @@
 <?php
 
+include 'vendor/autoload.php';
+
 use \mageekguy\atoum;
 
 $report = $script->addDefaultReport();
