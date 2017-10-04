@@ -45,6 +45,6 @@ class Api implements ApiInterface
 
     public function plugins($api, $body = [])
     {
-        return $this->client->get('/apis/'.$api.'/plugins/');
+        return $this->client->get('/apis/'.$api.'/plugins', ['body' => $body]);
     }
 }
