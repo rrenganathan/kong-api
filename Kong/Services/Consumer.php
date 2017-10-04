@@ -42,4 +42,9 @@ class Consumer implements ConsumerInterface
     {
         return $this->client->delete('/consumers/'.$consumer);
     }
+    
+    public function createCredential($consumer, $credential, $body = [])
+    {
+        return $this->client->post('/consumers/'.$consumer.'/'.$credential, ['body' => $body]);
+    }
 }
