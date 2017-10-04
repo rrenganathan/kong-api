@@ -6,17 +6,17 @@ interface PluginInterface
 {
     const SERVICE_NAME = 'plugin';
 
-    public function create($api, $body = []);
+    public function create($body = []);
 
     public function retrieve($plugin);
 
     public function all($body = []);
 
-    public function update($api, $plugin, $body = []);
+    public function update($plugin, $body = []);
 
-    public function updateOrCreate($api = '', $body = []);
+    public function updateOrCreate($body = []);
 
-    public function delete($api, $plugin);
+    public function delete($plugin);
 
     public function enabled();
 

@@ -13,11 +13,9 @@ class Plugin implements PluginInterface
         $this->client = $client ?: new Client();
     }
 
-    public function create($api = '', $body = [])
+    public function create($body = [])
     {
-        $url = $api ? '/apis/'.$api.'/plugins/' : '/apis/plugins/';
-
-        return $this->client->post($url, ['body' => $body]);
+        return $this->client->post('/plugins', ['body' => $body]);
     }
 
     public function retrieve($plugin)
@@ -27,33 +25,27 @@ class Plugin implements PluginInterface
 
     public function all($body = [])
     {
-        return $this->client->get('/plugins/', ['body' => $body]);
+        return $this->client->get('/plugins', ['body' => $body]);
     }
 
-    public function update($api, $plugin, $body = [])
+    public function update($uuid, $body = [])
     {
-        $url = $api ? '/apis/'.$api.'/plugins/'.$plugin : '/apis/plugins/'.$plugin;
-
-        return $this->client->patch($url, ['body' => $body]);
+        return $this->client->patch('/plugins/'.$uuid, ['body' => $body]);
     }
 
-    public function updateOrCreate($api = '', $body = [])
+    public function updateOrCreate($body = [])
     {
-        $url = $api ? '/apis/'.$api.'/plugins/' : '/apis/plugins/';
-
-        return $this->client->put($url, ['body' => $body]);
+        return $this->client->put('/plugins', ['body' => $body]);
     }
 
-    public function delete($api, $plugin)
+    public function delete($uuid)
     {
-        $url = $api ? '/apis/'.$api.'/plugins/'.$plugin : '/apis/plugins/'.$plugin;
-
-        return $this->client->delete($url);
+        return $this->client->delete('/plugins/'.$uuid);
     }
 
     public function enabled()
     {
-        return $this->client->post('/plugins/enabled');
+        return $this->client->get('/plugins/enabled');
     }
 
     public function schema($plugin)
