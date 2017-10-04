@@ -17,4 +17,6 @@ interface ConsumerInterface
     public function updateOrCreate($body = []);
 
     public function delete($consumer);
+    
+    public function createCredential($consumer, $credential, $body = []);
 }
