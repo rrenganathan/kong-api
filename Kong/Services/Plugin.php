@@ -34,21 +34,21 @@ class Plugin implements PluginInterface
     {
         $url = $api ? '/apis/'.$api.'/plugins/'.$plugin : '/apis/plugins/'.$plugin;
 
-        return $this->client->post($url, ['body' => $body]);
+        return $this->client->patch($url, ['body' => $body]);
     }
 
     public function updateOrCreate($api = '', $body = [])
     {
         $url = $api ? '/apis/'.$api.'/plugins/' : '/apis/plugins/';
 
-        return $this->client->post($url, ['body' => $body]);
+        return $this->client->put($url, ['body' => $body]);
     }
 
     public function delete($api, $plugin)
     {
         $url = $api ? '/apis/'.$api.'/plugins/'.$plugin : '/apis/plugins/'.$plugin;
 
-        return $this->client->post($url);
+        return $this->client->delete($url);
     }
 
     public function enabled()
@@ -58,6 +58,6 @@ class Plugin implements PluginInterface
 
     public function schema($plugin)
     {
-        return $this->client->post('/plugins/schema/'.$plugin);
+        return $this->client->get('/plugins/schema/'.$plugin);
     }
 }
